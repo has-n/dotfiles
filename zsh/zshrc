@@ -1,0 +1,70 @@
+# redacted PATH
+export PATH=/opt/homebrew/bin
+# redacted
+
+# starship init
+eval "$(starship init zsh)"
+
+# history setup
+# https://www.josean.com/posts/how-to-setup-alacritty-terminal
+HISTFILE=$HOME/.zhistory
+SAVEHIST=1000
+HISTSIZE=999
+setopt share_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_verify
+
+# completion using arrow keys (based on history)
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+
+# thanks to Claude
+# Double-tap ESC to clear line
+KEYTIMEOUT=50  # Reduces key sequence timeout (default is 40)
+bindkey '\e\e' kill-whole-line
+
+# hasan's custom aliases
+alias ls="eza --icons=always"
+alias edit="nvim"
+md() {
+    mkdir -p "$1" && cd "$1"
+}
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ll='ls -lah'
+alias home='cd ~'
+alias tm2="tmux new-session \; split-window -h"
+alias tmk="tmux kill-server"
+alias tmls="tmux list-sessions"
+
+# Extract any archive - thanks to Claude
+extract() {
+    if [ -f $1 ]; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1     ;;
+            *.tar.gz)    tar xzf $1     ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar e $1     ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xf $1      ;;
+            *.tbz2)      tar xjf $1     ;;
+            *.tgz)       tar xzf $1     ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *)           echo "'$1' cannot be extracted" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+# plugins
+
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# this should be at the bottom of zshrc 
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
