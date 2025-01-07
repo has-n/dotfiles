@@ -1,6 +1,13 @@
-# redacted PATH
-export PATH=/opt/homebrew/bin
-# redacted
+# make sure to install the following before using this 
+# brew install starship
+# brew install zsh-autosuggestions
+# brew install eza
+# brew install nvim
+# brew install tmux
+# brew install zsh-syntax-highlighting
+# brew install asdf
+
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:$PATH"
 
 # starship init
 eval "$(starship init zsh)"
