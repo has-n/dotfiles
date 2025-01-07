@@ -9,8 +9,9 @@
 # brew install asdf
 
 # 2. make sure to set the correct paths for the source-ing of zsh files towards the bottom of this doc
-# for M1/M2 macs, use "/opt/homebrew/share/**"
-# for Intel macs, use "/usr/local/Cellar/**"
+# echo "source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+# echo "source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+# zsh-syntax-highlighting.zsh should be the last line of the zshrc file
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:$PATH"
 
